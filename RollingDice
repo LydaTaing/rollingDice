@@ -1,0 +1,121 @@
+import java.util.Scanner;
+
+public class RollingDice {
+
+	public static void main(String[] args) {
+		Scanner console = new Scanner(System.in);
+		//System.out.printf("TThe sum of number is %d.",sumofData(console) ); 
+		//TestingBooleanExpresssion(console);
+		//tossCoin (10000); // testing random statement
+		//rollDice(10000);
+		//rollTwoDicetoGet12(10000);
+		rollDicesToThree12a(1000);
+		
+
+	}
+	private static void rollDicesToThree12a(int time) {
+		int sum = 0;
+		int count12s = 0;
+		int dice1 = (int) (Math.random() *6) +1;
+		int dice2 = (int) (Math.random() *6) +1;
+		int r1 = dice1 + dice2;
+		int r2 = dice1 + dice2;
+		int r3 = dice1 + dice2;
+		
+		while (r1 != 12 && r2 != 12 && r3 != 12) {
+			int r= dice1+ dice2;
+			r1 = r2;
+			r2= r3;
+			r3= r;
+		}
+		System.out.println("12");
+		
+		
+	}
+	private static void rollTwoDicetoGet12(int time) {
+		int sum = 0;
+		int count = 0;
+		for (int i =1 ; i <=time ; i++) {
+			int dice1 = (int) (Math.random() *6) +1;
+			int dice2 = (int) (Math.random() *6) +1;
+			while ((dice1 +dice2) != 12) {
+				System.out.println("The 12 comes up: " + (dice1 +dice2) + ".");
+				dice1 = (int) (Math.random() *6) +1;
+				dice2 = (int) (Math.random() *6) +1;
+				++count;
+			}
+		}
+		System.out.println("You rolled a 12!, it took " + count + " rolls.");
+	}
+	
+	
+	private static void rollDice(int time) {
+		int one = 0;
+		int two = 0;
+		int three = 0;
+		int four = 0;
+		int five= 0;
+		int six = 0;
+		for (int i =1 ; i <=time ; i++) {
+			int roll = (int) (Math.random() *6 +1);
+			if (roll == 1) {
+				++one;
+			}else if (roll == 2) {
+				++two;
+			}else if (roll == 3) {
+				++three;
+			}else if (roll == 4) {
+				++four;
+			}else if (roll == 5) {
+				++five;
+			}else if (roll == 6) {
+				++six;
+			}
+		}
+		System.out.println("Number one: " +one);
+		System.out.println("Number two: " +two);
+		System.out.println("Number three: " +three);
+		System.out.println("Number four: " +four);
+		System.out.println("Number five: " +five);
+		System.out.println("Number six: " +six);
+		
+		
+		
+	}
+	private static void tossCoin(int time) {
+		int tails = 0;
+		
+		for (int i =1 ; i <=time ; i++) {
+			double toss = Math.random();
+			if (toss < 0.5) {
+				++tails;
+			}
+		}
+		System.out.println("Tails: " + tails);
+		System.out.println("Heads " + (time-tails));
+	}
+	private static void TestingBooleanExpresssion(Scanner console) {
+		System.out.println("Enter the value of speed: ");
+		int speed= console.nextInt(); 
+		while (!(speed >=25 && speed <= 60)) {	//boolean expression 
+			// we can use (!(speed >=25) |\ !(speed<=60)){
+			System.out.println("Enter the value of speed: ");
+			speed = console.nextInt();
+		}
+		System.out.println("Thank you for driving safely.");
+		
+	}
+	private static Object sumofData(Scanner console) {
+		System.out.print("Enter positive number (use negative value to stop): ");
+		int numb =console.nextInt();
+		int sum =0;
+		while (numb >=0) {
+			sum = sum + numb;
+			System.out.print("Enter positive number (use negative value to stop): ");
+			numb = console.nextInt();
+		}
+		
+		return sum;
+	}
+	
+}
